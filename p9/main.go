@@ -1,4 +1,4 @@
-// store function inside a  map
+// Store function inside a map
 package main
 
 import "fmt"

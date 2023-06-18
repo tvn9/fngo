@@ -1,4 +1,4 @@
-// Refacturing the previous calculator program to functional stype
+// Refacturing the previous calculator program to functional style
 package main
 
 import "fmt"

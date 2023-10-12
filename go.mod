@@ -1,3 +1,3 @@
 module github.com/tvn9/fpgo
 
-go 1.20
+go 1.21.2

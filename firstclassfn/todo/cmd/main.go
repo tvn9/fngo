@@ -1,6 +1,6 @@
 package main
 
-import "github.com/tvn9/fpgo/todo/pkg"
+import "github.com/tvn9/fpgo/firstclassfn/todo/pkg"
 
 func main() {
 	t := pkg.NewTodo()

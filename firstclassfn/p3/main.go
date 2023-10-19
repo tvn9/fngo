@@ -1,32 +1,36 @@
-// Type aliases for functions
+// Type aliases for functions and passing function to functions
 package main
 
 import (
 	"fmt"
 )
 
+// defind a veriable with func(int) bool {} as function signature.
 type predicate func(int) bool
 
+// This is where program start => main()
 func main() {
-	is := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}
+	// define a variable that hold the list of numbers
+	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}
 
-	larger := filter(is, largerThan5) // passing funtion to
+	largeNums := filter(nums, largerThan8) // passing funtion to to functions
 
-	fmt.Printf("%v\n", larger)
+	fmt.Printf("%v\n", largeNums)
 }
 
 // Passing function to function
-func filter(is []int, lt5 predicate) []int {
+func filter(ns []int, lt8 predicate) []int {
 	out := []int{}
 
-	for _, i := range is {
-		if lt5(i) {
-			out = append(out, i)
+	for _, n := range ns {
+		if lt8(n) {
+			out = append(out, n)
 		}
 	}
 	return out
 }
 
-func largerThan5(i int) bool {
-	return i > 5
+// Regular function
+func largerThan8(i int) bool {
+	return i > 8
 }

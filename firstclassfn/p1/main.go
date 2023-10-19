@@ -8,6 +8,8 @@ type predicate func(int) bool
 
 func main() {
 	is := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}
+	fmt.Println(is)
+
 	larger := filter(is, largerThan5)
 
 	fmt.Printf("%v\n", larger)

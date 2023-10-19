@@ -1,4 +1,4 @@
-// Function inside data structures
+// Functions inside data structures
 package main
 
 import "fmt"

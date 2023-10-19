@@ -6,17 +6,20 @@ import "fmt"
 type predicate func(int) bool
 
 func main() {
-	// Struct in variable
+	// inline struct
 	inlinePersonStruct := struct {
 		name string
 	}{
 		name: "Thanh",
 	}
 
+	// ints slice
 	ints := []int{1, 2, 3, 5, 6, 7}
 
-	// Functions in variable
-	inlineFunction := func(i int) bool { return i > 2 }
+	// inline function
+	inlineFunction := func(i int) bool {
+		return i > 2
+	}
 
 	larger := filter(ints, inlineFunction)
 
@@ -24,6 +27,7 @@ func main() {
 	fmt.Println(larger)
 }
 
+// passing function to function
 func filter(ints []int, p predicate) []int {
 	out := []int{}
 	for _, i := range ints {

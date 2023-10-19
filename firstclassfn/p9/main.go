@@ -1,4 +1,4 @@
-// Store function inside a map
+// Store function inside a map "map dispatcher pattern."
 package main
 
 import "fmt"
@@ -20,6 +20,8 @@ func main() {
 		"100": largerThanHundred,
 	}
 
+	fmt.Printf("%v\n", filter(ints, dispatcher["2"]))
+	fmt.Printf("%v\n", filter(ints, dispatcher["5"]))
 	fmt.Printf("%v\n", filter(ints, dispatcher["100"]))
 }
 

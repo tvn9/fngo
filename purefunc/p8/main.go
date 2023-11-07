@@ -1,6 +1,11 @@
 // Example function to create user
 package main
 
+import (
+	"errors"
+	"fmt"
+)
+
 type User struct {
 	username string
 	password string
@@ -40,7 +45,7 @@ func createUser(username, password string) (User, error) {
 	if u.validPassword() {
 		return u, nil
 	}
-	return User{}, Error.new("invalid password")
+	return User{}, errors.New("invalid password")
 }
 
 func (u User) validPassword() bool {
@@ -51,7 +56,13 @@ func (u User) validPassword() bool {
 	return false
 }
 
+func (udb userDb) save(u User) {
+	if udb.username != u.username {
+		fmt.Println(u)
+	}
+}
 func saveUser(u User) {
+	userDb := userDb{}
 	userDb.save(u)
 }
 

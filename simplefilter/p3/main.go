@@ -21,6 +21,10 @@ func Filter[A any](input []A, pred Predicate[A]) []A {
 }
 
 func main() {
+	// Credit a sequential order numbers slice rang from and to n
+	test := pkg.CreateIntSlice(10, 30)
+	fmt.Println(test)
+
 	// Create 20 numbers slice with random value from 0 to 30
 	input := pkg.CreateRandIntSlice(20, 30)
 	fmt.Printf("Random number range from 0 to 30: %v\n", input)

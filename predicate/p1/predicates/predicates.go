@@ -26,6 +26,7 @@ func FilterWithThreshold(numbers []int, threshold int) []int {
 	return out
 }
 
+// FilterGeneric allows the input of any data type
 func FilterGeneric[A any](input []A, pred Predicate[A]) []A {
 	output := []A{}
 	for _, element := range input {

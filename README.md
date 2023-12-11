@@ -35,7 +35,7 @@ func Filter(nums []int, p predicate) []int {
 
 ### Passing function to function  
 
-example of how to pass function to function  
+Example of how to pass function to function  
 
 ```
 type predicate func(i int) bool  
@@ -57,5 +57,55 @@ func Filter(nums []int, p predicate) []int {
    }
    return out
 }
+```  
+
+### Inline function  
+
 ```
+func main() {
+   nums := []int{1,2,3,4,5,6,7,8,9,0}
+   // find even num
+   evenNum := func(n int) bool {
+      if n % 2 == 0 {
+         return true
+      } 
+   }
+
+   fmt.Println(Filter(nums, evenNum))
+}
+```
+
+### Anonymous Function  
+
+```
+Filter(nums, func(i int) bool { return i % 2 == 0 })
+```
+
+Example of how to use and anonymous function 
+```
+func main() {
+   // Filter function uses an un named slice and function to look for even numbers
+   out := Filter([]int{2,3,5,8,10}, func(i int) bool { return i % 2 == 0 })
+   fmt.Println(out)
+}
+```  
+
+### Return function from function 
+
+```
+type predicate func(i int) bool  
+
+
+func largerThan(filter int) predicate {
+   return func(i) bool { return i > filter}
+}
+
+func smallerThan(filter int) predicate {
+   return func(i int) bool { return i < filter }
+}
+```  
+
+Example of how to use a return function from function
+
+
 

@@ -15,13 +15,13 @@ VS Code
 ## Nodes and Example Code
 ### Type alias for function
 
-```
+``` go
 type predicate func(i int) bool
 
 ```  
 Example of how to use predicate function 
 
-```
+``` go
 func Filter(nums []int, p predicate) []int {
    var out []int
    for _, n := nums {
@@ -37,7 +37,7 @@ func Filter(nums []int, p predicate) []int {
 
 Example of how to pass function to function  
 
-```
+```go
 type predicate func(i int) bool  
 
 func evenNum(i int) bool {
@@ -61,7 +61,7 @@ func Filter(nums []int, p predicate) []int {
 
 ### Inline function  
 
-```
+```go
 func main() {
    nums := []int{1,2,3,4,5,6,7,8,9,0}
    // find even num
@@ -77,12 +77,13 @@ func main() {
 
 ### Anonymous Function  
 
-```
+```go
 Filter(nums, func(i int) bool { return i % 2 == 0 })
 ```
 
 Example of how to use and anonymous function 
-```
+
+```go
 func main() {
    // Filter function uses an un named slice and function to look for even numbers
    out := Filter([]int{2,3,5,8,10}, func(i int) bool { return i % 2 == 0 })
@@ -92,7 +93,7 @@ func main() {
 
 ### Return function from function 
 
-```
+```go
 type predicate func(i int) bool  
 
 

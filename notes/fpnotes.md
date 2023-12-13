@@ -219,6 +219,74 @@ func main() {
 }
 ```
 
+### Higher-order Functions
+
+Basic example of higher-order function  
+
+```go
+// Introduction to higher-order functions
+package main
+
+import "fmt"
+
+func Hello() string {
+	return "Hello,"
+}
+
+func World() string {
+	return Hello() + " world!"
+}
+
+func main() {
+	fmt.Println(World())
+}
+
+```
+
+Higher-order function as inter function  
+
+```Go
+// Although we don’t take a function as input, we are returning a function as output.
+// This is a valid characteristic of higher-order functions.
+package main
+
+import "fmt"
+
+func outerfunc(s string) func() {
+	fmt.Println("Outer func: ", s)
+	return func() {
+		fmt.Println("Inter function")
+	}
+}
+
+func main() {
+	testfunc := outerfunc("Higher-order function")
+	testfunc()
+}
+```
+
+Closure as inner function  
+
+```Go
+// Example of closure, a closure is an inner function that use
+// a variable introduced in the outer function to perform its work.
+
+func ask() func(string) string {
+	s := "What is your name? "
+	return func(name string) string {
+		return s + name
+	}
+}
+
+func main() {
+	interview := ask()
+	name := interview("Thanh Vu Nguyen.")
+	fmt.Println(name)
+}
+
+```
+
+
 
 
 

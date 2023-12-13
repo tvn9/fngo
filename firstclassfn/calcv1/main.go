@@ -1,7 +1,9 @@
 // Refacturing the previous calculator program to functional style
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // calculateFunc setup a variable with type func(int, int) int
 type calculateFunc func(int, int) int
@@ -33,7 +35,6 @@ func div(a, b int) int {
 		panic("devide by zero")
 	}
 	return (a / b)
-
 }
 
 // calculateWithMap perform calculation using map dispatcher pattern
@@ -41,17 +42,14 @@ func calculateWithMap(a, b int, op string) int {
 	if operator, ok := operators[op]; ok {
 		return operator(a, b)
 	}
-	panic("Operation not supported.")
+	return 0
 }
 
 // The good old main
 func main() {
 	a := 19
 	b := 5
-
 	operator := "*"
-
 	result := calculateWithMap(a, b, operator)
-
 	fmt.Printf("%d %s %d = %v\n", a, operator, b, result)
 }

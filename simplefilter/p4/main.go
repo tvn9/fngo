@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/tvn9/fpgo/simplefilter/p4/pkg"
+	"fpgo/simplefilter/p4/pkg"
 )
 
 type (

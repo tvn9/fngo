@@ -3,9 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"fpgo/reduce/utils"
 	"os"
-
-	"github.com/tvn9/fpgo/reduce/utils"
 )
 
 type Entry struct {
@@ -65,7 +64,7 @@ func main() {
 		return e.Airport.Code == "SEA"
 	})
 	WeatherDelayHours := utils.FMap(SEA, func(e Entry) int {
-		return e.Statistics.MunitesDelayed.Weather / 60
+		return e.Statistics.MinutesDelayed.Weather / 60
 	})
 	totalWeatherDelay := utils.Sum(WeatherDelayHours)
 	fmt.Printf("%v\n", totalWeatherDelay)

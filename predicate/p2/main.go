@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/tvn9/fpgo/predicate/p2/predicate"
+	"fpgo/predicate/p2/predicate"
 )
 
 func main() {

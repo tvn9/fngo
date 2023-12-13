@@ -2,9 +2,8 @@ package pkg_test
 
 import (
 	"fmt"
+	"fpgo/firstclassfn/todo/pkg"
 	"testing"
-
-	"github.com/tvn9/fpgo/firstclassfn/todo/pkg"
 )
 
 func TestTodoWrite(t *testing.T) {

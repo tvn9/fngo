@@ -3,8 +3,7 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/tvn9/fpgo/simplefilter/p3/pkg"
+	"fpgo/simplefilter/p3/pkg"
 )
 
 type Predicate[A any] func(A) bool

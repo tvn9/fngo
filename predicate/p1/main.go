@@ -3,8 +3,7 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/tvn9/fpgo/predicate/p1/predicates"
+	"fpgo/predicate/p1/predicates"
 )
 
 func main() {
@@ -17,16 +16,3 @@ func main() {
 	})
 	fmt.Printf("%v\n%v\n", larger0smaller20, evenNumbers)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

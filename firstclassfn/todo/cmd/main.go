@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/tvn9/fpgo/firstclassfn/todo/pkg"
+	"fpgo/firstclassfn/todo/pkg"
 )
 
 func main() {

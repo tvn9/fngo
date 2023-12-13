@@ -3,6 +3,8 @@ package main
 
 import "fmt"
 
+type calculateFunc func(int, int) int
+
 func add(a, b int) int {
 	return a + b
 }
@@ -22,8 +24,7 @@ func div(a, b int) int {
 	return a / b
 }
 
-func calculate(a int, operator string, b int) int {
-
+func calculate(a, b int, operator string) int {
 	switch operator {
 	case "+":
 		return add(a, b)
@@ -38,8 +39,6 @@ func calculate(a int, operator string, b int) int {
 	}
 }
 
-type calculateFunc func(int, int) int
-
 var (
 	operations = map[string]calculateFunc{
 		"+": add,
@@ -49,7 +48,7 @@ var (
 	}
 )
 
-func calculateWithMap(a int, operator string, b int) int {
+func calculateWithMap(a, b int, operator string) int {
 	if operation, ok := operations[operator]; ok {
 		return operation(a, b)
 	}
@@ -62,11 +61,11 @@ func main() {
 
 	operator := "/"
 
-	result := calculate(a, operator, b)
+	result := calculate(a, b, operator)
 
 	fmt.Printf("%d %s %d = %v\n", a, operator, b, result)
 
-	result1 := calculateWithMap(a, operator, b)
+	result1 := calculateWithMap(a, b, operator)
 
 	fmt.Printf("%d %s %d = %v\n", a, operator, b, result1)
 

@@ -87,7 +87,7 @@ Example of how to use and anonymous function
 
 ```go
 func main() {
-   // Filter function uses an un named slice and function to look for even numbers
+   // Filter function uses an unnamed slice and function to look for even numbers
    out := Filter([]int{2,3,5,8,10}, func(i int) bool { return i % 2 == 0 })
    fmt.Println(out)
 }
@@ -113,7 +113,7 @@ func smallerThan(filter int) predicate {
 Example of how to use a return function from function
 
 ``` go 
-
+// function in var 
 var ( 
    largerThanFive = largerThan(5)
    largetThan50 = largerThan(50)
@@ -133,6 +133,86 @@ func main() {
 } 
 
 ```
+
+### Function inside data structures
+
+Example of function in a slice of functions - []func  
+
+``` go
+predicates := []predicates{function1, function2, function3}
+```  
+
+How to use function in slice of functions
+
+``` go 
+// function in var
+var (
+   largerThanFive = largerThan(5)
+   largetThan50 = largerThan(50)
+   smallerThanTwo = smallerThan(2)
+)
+
+func main() {
+   nums := []int{1, 2, 5, 8, 10, 23, 59, 99, 100}
+   
+   predicates := []predicate{largerThanFive, largerThan50, smallerThanTwo}
+
+   for _, predicate := range predicates {
+      out := Filter(nums, predicate)
+      fmt.Println(out)
+   } 
+}
+
+```  
+
+Example of function inside map 
+
+``` go
+predicates := map[string]predicate{
+   ["larger5": largerThan(5)
+   ["larger10": largerThan(10)
+   ["smaller23": smallerThan(23)
+}
+
+```
+
+How to use functions inside a map  
+
+``` go 
+func main() {
+   nums := []int{1, 2, 5, 8, 10, 23, 59, 99, 100}
+   predicates := [string]predicate{
+      "larger5": largerThan(5),
+      "larger10": largerThan(10,
+      "smaller23": smallerThan(23))
+   }
+
+   fmt.Printf("%v\n", Filter(nums, predicates["larger5"]))
+   fmt.Printf("%v\n", Filter(nums, predicates["larger10"]))
+   fmt.Printf("%v\n", Filter(nums, predicates["larger23"]))
+}
+```
+
+### Function inside structs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

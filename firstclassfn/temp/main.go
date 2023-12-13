@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type predicate func(i int) bool
 
@@ -12,17 +14,21 @@ func SmallerThan(filter int) predicate {
 	return func(i int) bool { return i < filter }
 }
 
+var (
+	larger5  = LargerThan(5)
+	larget45 = LargerThan(45)
+	smaller5 = SmallerThan(5)
+)
+
 func main() {
 	nums := []int{1, 32, 2, 5, 43, 45, 96, 8, 33}
 
-	largerThanFive := LargerThan(5)
-	SmallerThanFive := SmallerThan(5)
+	predicates := []predicate{larger5, larget45, smaller5}
 
-	out := Filter(nums, largerThanFive)
-	fmt.Println(out)
-
-	fmt.Println(Filter(nums, SmallerThanFive))
-
+	for _, pred := range predicates {
+		out := Filter(nums, pred)
+		fmt.Println(out)
+	}
 }
 
 func Filter(nums []int, p predicate) []int {

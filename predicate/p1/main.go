@@ -17,3 +17,16 @@ func main() {
 	})
 	fmt.Printf("%v\n%v\n", larger0smaller20, evenNumbers)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

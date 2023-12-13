@@ -179,7 +179,46 @@ func main() {
 }
 ```
 
-### Function inside structs
+### Function inside structs  
+
+``` go
+// type alias for function
+type predicate func(i int) bool 
+
+// largerThanFunc returns type predicate function 
+func largerThanFunc(filter int) predicate {
+   return func(i int) bool {
+      return i > filter
+   }
+}
+
+// ValidCheck holds predicate function
+type ValidRange struct {
+   largerThan predicate
+   smallerThan predicate
+}
+```  
+
+How to use function in struct  
+
+```go 
+// check method returns ValidRange's fields that hold type predicate function
+func (v ValidRange) check(i int) bool {
+   return v.largerThan(i) && v.smallerThan(i)
+}
+
+func main() {
+   // create new ValidRage struct that hold the functions 
+   // that check for value larger than 2 and smaller than 9
+   checker := ValidRange {
+      largerThan: largerThanFunc(2),
+      smallerThan: func(i int) bool { return i < 9 }
+   }
+   // Check to see if 6 is greater than 2 and smaller than 9
+   fmt.Printf("%v\n", checker.check(6))   // true
+}
+```
+
 
 
 

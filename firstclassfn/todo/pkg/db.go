@@ -5,12 +5,15 @@ import (
 	"os"
 )
 
+// type alias for function
 type authorizationFunc func() bool
 
+// Db struct
 type Db struct {
 	AuthorizationFn authorizationFunc
 }
 
+// IsAuthorized method
 func (d *Db) IsAuthorized() bool {
 	return d.AuthorizationFn()
 }
@@ -22,12 +25,14 @@ func NewDB() *Db {
 }
 
 func argsAuthorization() bool {
-	user := os.Args[1]
+	args := os.Args[1:]
+	if len(args) != 1 {
+		fmt.Println("usage: comamand username")
+		os.Exit(1)
+	}
+	user := "admin"
 	// super secure authorization layer
 	// in a real application, this would be a database call
 	fmt.Println(user)
-	if user == "admin" {
-		return true
-	}
-	return false
+	return args[0] == user
 }

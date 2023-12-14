@@ -124,7 +124,7 @@ func main() {
 
 Example of function in a slice of functions - []func  
 
-``` go
+```Go
 predicates := []predicates{function1, function2, function3}
 ```  
 
@@ -225,10 +225,6 @@ Basic example of higher-order function
 
 ```go
 // Introduction to higher-order functions
-package main
-
-import "fmt"
-
 func Hello() string {
 	return "Hello,"
 }
@@ -246,11 +242,9 @@ func main() {
 Higher-order function as inter function  
 
 ```Go
-// Although we don’t take a function as input, we are returning a function as output.
+// Although the example shows there is no passing function as input, 
+// but a function can return a function as output.
 // This is a valid characteristic of higher-order functions.
-package main
-
-import "fmt"
 
 func outerfunc(s string) func() {
 	fmt.Println("Outer func: ", s)
@@ -263,6 +257,7 @@ func main() {
 	testfunc := outerfunc("Higher-order function")
 	testfunc()
 }
+
 ```
 
 Closure as inner function  
@@ -285,6 +280,32 @@ func main() {
 }
 
 ```
+
+### Partial Application 
+
+Example of Partial application  
+
+```Go
+
+// createGreeting returns a function that also take in a string
+// combind the variable and return a string
+func createGreeting(g string) func(s string) string {
+	return func(name string) string {
+		return g + name
+	}
+}
+
+func main() {
+	firstGreeting := createGreeting("Well, hello there ")
+	secondGreeting := createGreeting("Hola ")
+	fmt.Println(firstGreeting("Thanh"))
+	fmt.Println(firstGreeting("Xuan"))
+	fmt.Println(secondGreeting("Kim"))
+}
+
+```  
+
+[Full code example on partial application](../hiorderfunc/dogspawner/main.go)  
 
 
 

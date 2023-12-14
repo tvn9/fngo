@@ -32,7 +32,7 @@ type Dog struct {
 	Gender Gender
 }
 
-// createDogWithoutPartialApplication
+/*
 func createDogsWithoutPartialApplicaiton() {
 	bucky := Dog{
 		Name:   "Bucky",
@@ -53,6 +53,7 @@ func createDogsWithoutPartialApplicaiton() {
 	_ = rocky
 	_ = tipsy
 }
+*/
 
 func (b Breed) String() string {
 	switch b {
@@ -102,5 +103,4 @@ func main() {
 	fmt.Printf("Name: %s, Breed: %s, Gender: %s\n", bucky.Name, bucky.Breed.String(), bucky.Gender.String())
 	fmt.Printf("Name: %s, Breed: %s, Gender: %s\n", rocky.Name, rocky.Breed.String(), rocky.Gender.String())
 	fmt.Printf("Name: %s, Breed: %s, Gender: %s\n", tipsy.Name, tipsy.Breed.String(), tipsy.Gender.String())
-
 }

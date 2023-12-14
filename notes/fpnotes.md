@@ -117,7 +117,6 @@ func main() {
    fmt.Println(larger50)
    fmt.Println(smaller2)
 } 
-
 ```
 
 ### Function inside data structures
@@ -148,7 +147,6 @@ func main() {
       fmt.Println(out)
    } 
 }
-
 ```  
 
 Example of function inside map 
@@ -159,7 +157,6 @@ predicates := map[string]predicate{
    ["larger10": largerThan(10)
    ["smaller23": smallerThan(23)
 }
-
 ```
 
 How to use functions inside a map  
@@ -236,7 +233,6 @@ func World() string {
 func main() {
 	fmt.Println(World())
 }
-
 ```
 
 Higher-order function as inter function  
@@ -257,7 +253,6 @@ func main() {
 	testfunc := outerfunc("Higher-order function")
 	testfunc()
 }
-
 ```
 
 Closure as inner function  
@@ -278,7 +273,6 @@ func main() {
 	name := interview("Thanh Vu Nguyen.")
 	fmt.Println(name)
 }
-
 ```
 
 ### Partial Application 
@@ -286,7 +280,6 @@ func main() {
 Example of Partial application  
 
 ```Go
-
 // createGreeting returns a function that also take in a string
 // combind the variable and return a string
 func createGreeting(g string) func(s string) string {
@@ -302,14 +295,55 @@ func main() {
 	fmt.Println(firstGreeting("Xuan"))
 	fmt.Println(secondGreeting("Kim"))
 }
-
 ```  
 
 [Full code example on partial application](../hiorderfunc/dogspawner/main.go)  
 
+### Function curring, how to reduce n-ary function to unary function  
 
+Example of function curring  
 
+```go 
+func F(a, b, c): int {}
+```  
 
+The first function, (Fa), takes a argument as input and return F(b) as output, function F(b) takes b as input and return function F(c) as output, function F(c) takes c as input and return and in as final output.  
+
+```Go 
+func Fa(a): Fb(b)
+func Fb(b): Fc(c)
+func Fc(c): int 
+```
+This is done by leveraging the concept of first-class citizens and higher-order functions.  
+
+Example of function without currying 
+
+```Go
+func threeSum(a, b, c int) int {
+   return a + b + c
+}
+```  
+
+With currying  
+
+```go
+func threeSumCurried(a int) func(int) func(ing) int {
+   return func(b int) func(int) int {
+      return func(c int) int {
+         return a + b + c
+      }
+   }
+}
+```
+
+How to use the currying function?  
+
+```Go
+func main() {
+   fmt.Println(threeSum(30, 10, 20))   // 60
+   fmt.Println(threeSumCurried(20)(30)(10))    // 60
+}
+``` 
 
 
 

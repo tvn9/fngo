@@ -1,8 +1,10 @@
+package data
 
+/*
 // ShipType holds shipping service type and fee
 type ShipType struct {
 	ServiceType ShipType
-	ShipPrice   ShipFree
+	ShipPrice   ShipFee
 }
 
 type Carrier struct {
@@ -68,3 +70,4 @@ type CheckOutCart struct {
 	Tax
 	CardTotal int
 }
+*/

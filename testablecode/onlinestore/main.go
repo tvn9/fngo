@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"fpgo/testablecode/onlinestore/utils"
+	"log"
 )
 
 func main() {
@@ -39,4 +40,31 @@ func main() {
 	// Update existing contact
 	ct := utils.UpdateContactDetails(uThanh, taddr, tPhone, tEmail, cThanh)
 	fmt.Printf("Update Contact %v\n", ct)
+
+	// Create new item
+	sku := utils.ItemSku("TN0001")
+	desc := utils.ItemDesc("Standard Size Hotdog with Beef")
+	bPrice := utils.ItemPrice(12)
+	tFee := utils.ItemPrice(3)
+	oFee := utils.ItemPrice(1)
+
+	tn0001 := utils.NewItem(sku)
+	fmt.Printf("Create New Item: %v\n", tn0001)
+
+	// UpdateItemDetails
+	tn0001, err := utils.UpdateItemDetails(sku, utils.ItemName("HotDog"), desc, tn0001)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Update Item Details: %v\n", tn0001)
+
+	// Set new item cost
+	icost, err := utils.NewItemCost(tn0001.Sku, bPrice, tFee, oFee, tn0001)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Item Cost: %v\n", icost)
+
+	// Create new inventory item
+
 }

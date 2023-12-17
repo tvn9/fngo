@@ -1,5 +1,7 @@
 package utils
 
+import "errors"
+
 // type alias for general standard name
 type (
 	FirstName   string
@@ -47,4 +49,12 @@ type (
 	ShipType string
 	Carrier  string
 	ShipFee  uint
+)
+
+// Error
+type ItemError error
+
+// Error types
+var (
+	SKU_MISSMATCH ItemError = ItemError(errors.New("sku does not macth the record"))
 )

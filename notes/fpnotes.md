@@ -1,6 +1,6 @@
 ## Nodes and Example Code  
 
-### Type alias for function
+### Type alias for functions
 
 ``` go
 // type alias for function
@@ -24,7 +24,7 @@ func Filter(nums []int, p predicate) []int {
 }
 ``` 
 
-### Passing function to function  
+### Passing functions to functions  
 
 Example of how to pass function to function  
 
@@ -49,7 +49,7 @@ func Filter(nums []int, p predicate) []int {
 }
 ```  
 
-### Inline function  
+### Inline functions  
 
 ```go
 func main() {
@@ -62,7 +62,7 @@ func main() {
 }
 ```
 
-### Anonymous Function  
+### Anonymous functions 
 
 ```go
 // anonymous function
@@ -216,7 +216,7 @@ func main() {
 }
 ```
 
-### Higher-order Functions
+### Higher-order functions
 
 Basic example of higher-order function  
 
@@ -275,7 +275,7 @@ func main() {
 }
 ```
 
-### Partial Application 
+### Partial application 
 
 Example of Partial application  
 
@@ -345,6 +345,77 @@ func main() {
 }
 ``` 
 
+### Pure functions 
+
+What is purity? 
+- Does not generate any side effects
+- Return the same output when providing the same input (idempotence) 
+  
+Demonstrating pure versus impure function calls  
+
+```Go 
+// add take a, b and return the sum of a and b 
+// this is a form a pure function, as it will always return 
+// the consitent out when call with the same input
+func add(a, b int) int {
+   return a + b
+}
+```  
+
+impure function  
+
+```Go
+// rollDice return a random number from 0 to 6
+// the output is always unpredictable
+func rollDice() int {
+   return rand.Intn(6)
+}
+``` 
+
+### Referential transparentcy  
+
+```Go
+// Example we have this calculation
+X = 1 + (2 * 2)
+
+// the result is 5. We could have gotten the same result had we replaced
+// the multiplication with its result, like below:
+X = (1 + 4)
+```  
+
+This property is what we mean by referential transparency. All mathematical
+operations have this property, and many have leveraged this property when
+working out equations in algebra, calculus, or other mathematics classes.  
+
+In a programming language, referential transparency means that a function call
+can be replaced with its result.
+
+See this example 
+```Go
+func main() {
+   // call add(10, 5) result = 15 + 20, the total = 35
+   fmt.Printf("%v\n", add(20, add(10, 5)))  // 35
+   // pass the result of function add, 20 + 15, the total = 35  
+   fmt.Printf("%v\n", add(10, 15))          // 35
+}
+func add(a, b int) int {
+   return a + b
+}
+```  
+
+One more example of the function that break the referential transparency. 
+
+```Go
+func main() {
+   // time.Now() return the system time at execution time therefore the 
+   // result is always changing and unpredictable.
+   fmt.Println(time.Now())
+}
+``` 
+
+### Idempotence 
+
+Idempotence is one of the feature of pure functions, this means that the function will always returns the same result no matter how many times it executed.  
 
 
 

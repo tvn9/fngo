@@ -417,7 +417,11 @@ func main() {
 
 Idempotence is one of the feature of pure functions, this means that the function will always returns the same result no matter how many times it executed.  
 
+### Pure Functionals 
 
+Example of a basin onlinestore written in pure functional style
+
+[Online Store]("githum.bom/tvn9/fpgo/testable/onlinestore/main.go)
 
 
 

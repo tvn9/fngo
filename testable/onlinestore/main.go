@@ -44,9 +44,9 @@ func main() {
 	// Create new item
 	sku := utils.ItemSku("TN0001")
 	desc := utils.ItemDesc("Standard Size Hotdog with Beef")
-	bPrice := utils.ItemPrice(12)
-	tFee := utils.ItemPrice(3)
-	oFee := utils.ItemPrice(1)
+	bPrice := utils.Amount(12)
+	tFee := utils.Amount(3)
+	oFee := utils.Amount(1)
 
 	tn0001 := utils.NewItem(sku)
 	fmt.Printf("Create New Item: %v\n", tn0001)
@@ -59,12 +59,30 @@ func main() {
 	fmt.Printf("Update Item Details: %v\n", tn0001)
 
 	// Set new item cost
-	icost, err := utils.NewItemCost(tn0001.Sku, bPrice, tFee, oFee, tn0001)
+	icost, err := utils.NewItemCost(sku, bPrice, tFee, oFee, tn0001)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("Item Cost: %v\n", icost)
 
 	// Create new inventory item
+	invItem, err := utils.NewItemInv(utils.ItemCount(10), tn0001, icost)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Item cost %v\n", icost)
+	for i, item := range invItem.Items {
+		fmt.Printf("#%d, Sku: %s, Name %s, Desc %s, Count: %d, Cost: %d, Inv Cost: %d\n",
+			i, item.Sku, item.Name, item.Description, invItem.ItemOnHand, icost.Total, invItem.Total)
+	}
+
+	/*
+		// UpdateInv
+		uInvItem, err := utils.UpdateInv(tn0001, utils.ItemCount(5), itemInv, icost)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("Update Inventory: %v\n", uInvItem)
+	*/
 
 }

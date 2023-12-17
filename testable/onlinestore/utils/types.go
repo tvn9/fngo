@@ -31,7 +31,6 @@ type (
 	ItemSku   string
 	ItemName  string
 	ItemDesc  string
-	ItemPrice uint
 	ItemCount uint
 )
 
@@ -56,5 +55,6 @@ type ItemError error
 
 // Error types
 var (
-	SKU_MISSMATCH ItemError = ItemError(errors.New("sku does not macth the record"))
+	SKU_MISSMATCH    ItemError = ItemError(errors.New("sku does not macth the record"))
+	ITEM_COUNT_ERROR ItemError = ItemError(errors.New("please add a atleast 1 count, to inventory"))
 )

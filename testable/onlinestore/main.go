@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"fpgo/testablecode/onlinestore/utils"
+	"fpgo/testable/onlinestore/utils"
 	"log"
 )
 

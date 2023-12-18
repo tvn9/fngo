@@ -421,7 +421,7 @@ Idempotence is one of the feature of pure functions, this means that the functio
 
 Example of a basin onlinestore written in pure functional style
 
-[Online Store]("githum.bom/tvn9/fpgo/testable/onlinestore/main.go)
+[Online Store](../testable/onlinestore/main.go)
 
 
 

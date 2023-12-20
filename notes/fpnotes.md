@@ -417,11 +417,67 @@ func main() {
 
 Idempotence is one of the feature of pure functions, this means that the function will always returns the same result no matter how many times it executed.  
 
-### Pure Functionals 
+## Pure Functionals Implementation Examaples 
 
 Example of a basin onlinestore written in pure functional style
 
-[Online Store](../testable/onlinestore/main.go)
+[Online Store](../fpgo/onliestore/main.go)
+
+### Predicate-based functions 
+
+A predicate is a statement that can be evaluated as either true or false.
+The common use case is to filter a set of data into a subset that match a specific condition. For example filter all numbers that are smaller or larger than 10.  
+
+Predicate function type using Go generic
+
+```Go
+type Predicate[A any] func(A) bool  
+```  
+
+Filter function implementation 
+
+```Go
+func Filter(numbers []int) []int {
+   nums := []int{}
+
+   for _, n := range numbers {
+      if n > 10 {
+         nums = append(out, n)
+      }
+   }
+   return nums
+}
+``` 
+
+This function is can only filter a fix value, which is not very usefull in real program. 
+
+The next example will improve the function to a more dynamic filter value. 
+
+```Go
+func Filter(numbers []int, f int) []int {
+   nums := n range numbers {
+      if n > f {
+         nums = append(nus, n)
+      }
+   }
+   return nums
+}
+```
+
+Filter function in generic form 
+
+```Go
+func Filter[A any](input []A, p Predicate[A]) []A {
+   output := []A{}
+
+   for _, a := range input {
+      if p(a) {
+         output = append(output, a)
+      }
+   } 
+   return output
+}
+``` 
 
 
 

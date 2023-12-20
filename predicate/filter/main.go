@@ -3,7 +3,7 @@ package main
 
 import (
 	"fmt"
-	"fpgo/predicate/p1/predicates"
+	"predicates/filter/predicates"
 )
 
 func main() {

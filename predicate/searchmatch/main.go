@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"fpgo/predicate/p2/predicate"
+	"predicates/searchmatch/predicate"
 )
 
 func main() {

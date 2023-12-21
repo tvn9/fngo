@@ -1,4 +1,4 @@
-package predicate
+package pred
 
 func FlatMap[A any](input []A, m func(A) []A) []A {
 	output := []A{}

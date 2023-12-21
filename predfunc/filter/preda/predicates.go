@@ -1,4 +1,4 @@
-package predicates
+package preda
 
 // Predicate function type with go generic
 type Predicate[A any] func(A) bool

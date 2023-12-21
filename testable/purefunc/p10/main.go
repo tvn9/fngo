@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"fpgo/testablecode/purefunc/p10/pkg"
+	"fpgo/testable/purefunc/p10/pkg"
 )
 
 func main() {

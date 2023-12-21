@@ -417,7 +417,7 @@ func main() {
 
 Idempotence is one of the feature of pure functions, this means that the function will always returns the same result no matter how many times it executed.  
 
-## Pure Functionals Implementation Examaples 
+## Pure Functionals Implementation
 
 Example of a basin onlinestore written in pure functional style
 
@@ -464,7 +464,7 @@ func Filter(numbers []int, f int) []int {
 }
 ```
 
-Filter function in generic form 
+Filter function in generic form which allows user functions to pass in any data type.
 
 ```Go
 func Filter[A any](input []A, p Predicate[A]) []A {
@@ -479,7 +479,48 @@ func Filter[A any](input []A, p Predicate[A]) []A {
 }
 ``` 
 
+Let use the functions 
 
+```Go
+func main() {
+   input := []int{2, 4, 5, 8, 0, 1, 3, 35, 21, 68, 99}
+   larger20 := Filter(input, func(i int) bool { return i > 20})
+   smaller20 := Filter(input, func(i int) bool { return i < 20})
+
+   fmt.Printf("Larger20: %v, maller20 %v\n", larger20, smaller20)
+
+   larger10smaller20 := Filter(input, func(i int) bool { return i > 10 && i < 20 })
+   evenNumbers := Filter(input, func(i int) bool { return i % 2 == 0 })
+}
+``` 
+
+### Anay or all  
+
+Any functions, looking for a match  
+
+```Go
+// Looking for a match 
+func main() {
+   input := []int{2, 4, 5, 8, 0, 1, 3, 35, 21, 55, 68, 99}
+   // find number 55 in input 
+   filtered := Filter(input, func(i int) bool {return i == 55})
+   contains55 := len(filtered) > 0
+   fmt.Printf("Number of matches: %d %v\n", len(filtered), contains55) 
+}
+``` 
+
+Looking for all matches 
+
+```Go
+func AllMatches[A any](input []A, p PredicateA[A]) bool {
+   for _, o := range imput {
+      if !p(o) {
+         return false
+      }
+   }
+   return true
+}
+``` 
 
 
 

@@ -494,9 +494,9 @@ func main() {
 }
 ``` 
 
-### Anay or all  
+### Any or all  
 
-Any functions, looking for a match  
+Any function is the function implement to look for a match in an array of data.  
 
 ```Go
 // Looking for a match 
@@ -509,7 +509,7 @@ func main() {
 }
 ``` 
 
-Looking for all matches 
+Looking for all matches function.
 
 ```Go
 func AllMatches[A any](input []A, p PredicateA[A]) bool {
@@ -522,9 +522,62 @@ func AllMatches[A any](input []A, p PredicateA[A]) bool {
 }
 ``` 
 
+### DropWhile and TakeWhile 
 
+DropWhile implementation 
 
+```Go
+// Predicate function with generic 
+type Predicate[A any] func(A) bool 
 
+// DropWhile
+func DropWhile[A any](input []A, p Predicate[A]) []A {
+   output := []A{}
+   drop := true
+   for _, o := range input {
+      if !p(o) {
+         drop = false
+      }
+      if !drop {
+         output = append(output, o)
+      }
+   }
+   return output
+}
+``` 
+
+TakeWhile implementation 
+
+```Go 
+// TakeWhile
+func TakeWhile[A any](input []A, p Predicate[A]) []A {
+   output := []A{}
+   for _, o := range input {
+      if p(o) {
+         output = append(output, o)
+      } else {
+         return output
+      }
+   }
+   return output
+}
+```
+
+Use cases 
+
+```Go
+func main() {
+	input := []int{2, 4, 5, 8, 9, 15, 55, 55, 55, 3, 35, 21, 68, 99}
+	// all5 := []int{5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5}
+
+	evenNums := pred.TakeWhile(input, func(i int) bool { return i%2 == 0 })
+	fmt.Printf("Even numbers: %d\n", evenNums)
+
+   oddNums := pred.DropWhile(input, func(i int) bool { return i % 2 != 0 })
+	fmt.Printf("Odd numbers: %d\n", oddNums)
+
+}
+```
 
 
 

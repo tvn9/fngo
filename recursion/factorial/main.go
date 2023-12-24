@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// main starts the program
 func main() {
 	result1 := fact(5)
 	fmt.Println(result1)
@@ -9,6 +10,7 @@ func main() {
 	fmt.Println(result2)
 }
 
+// fact is a recursive factorial function
 func fact(input int) int {
 	if input == 0 {
 		return 1
@@ -16,10 +18,13 @@ func fact(input int) int {
 	return input * fact(input-1)
 }
 
+// factorial in iterative form
 func factorial(n int) int {
-	result := 1
+	num := 1
 	for i := 1; i <= n; i++ {
-		result = result * i
+		num *= i
+		fmt.Printf("%d * %d\n", i, num)
 	}
-	return result
+	fmt.Println(num)
+	return num
 }

@@ -524,6 +524,8 @@ func AllMatches[A any](input []A, p PredicateA[A]) bool {
 
 ### DropWhile and TakeWhile 
 
+If we knew that we only needed to look for integers, there are better algorithms than our Any implementation here. However, these examples are generically for any type of data.
+
 DropWhile implementation 
 
 ```Go
@@ -548,7 +550,7 @@ func DropWhile[A any](input []A, p Predicate[A]) []A {
 
 TakeWhile implementation 
 
-```Go 
+``` Go 
 // TakeWhile
 func TakeWhile[A any](input []A, p Predicate[A]) []A {
    output := []A{}
@@ -577,11 +579,65 @@ func main() {
 	fmt.Printf("Odd numbers: %d\n", oddNums)
 
 }
+```   
+
+## Map transformation functions
+
+Map function is known to be one of the most powerful functions in a functional progamming tool box.
+
+## Recursion  
+
+## Readable Function Composition with Fluent Programming  
+
+### Chaining functions through dot notation   
+
+Chaining methods for object creation (Builder patter)   
+
+```Go 
+type person struct {
+    firstName string
+    lastName   string 
+    age int
+}
+
+func NewPerson() *person {
+    return &person{}
+}
+
+func (p *person) SetFirstName(fName string) {
+    p.firstName = fName
+}
+
+func (p *person) SetLastName(lName string) {
+    p.lastName = lName
+}
+
+func (p *persion) SetAge(age string) {
+    p.age = age
+}
 ```
 
+How to use these function?   
 
+```Go
+func main() {
+    alice := newPerson()
+    alice.SetFirstName("Alice") 
+    alice.SetLastName("Elvi")  
+    alice.SetAge(30)  
+    fmt.Println(alice)
+}
+```
 
+Alternatively, a constructor can be used. 
 
+```Go
+func constructor(fName, lName string, age int) person {
+    person {
+        return person{fName, lName, age}
+	}
+}
+```
 
 
 

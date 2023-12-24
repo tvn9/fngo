@@ -32,7 +32,7 @@ func NewSku(s string, valid types.ValidString) (types.Sku, error) {
 	}
 }
 
-// NewSkus create a list of
+// NewSkusMap creates a map
 func NewSkusMap(s types.Sku) SkusMap {
 	sm := make(map[types.Sku]types.Sku)
 	sm[s] = s
@@ -43,7 +43,7 @@ func NewSkusMap(s types.Sku) SkusMap {
 func SkuFormatCheck(s string) bool {
 	us := strings.ToUpper(s)
 	str := us
-	// Pretent this is a validation for legal Sku
+	// Pretend this is a validation for legal Sku
 	// Future update should include regular expression to check for legal Sku format
 	if str == us {
 		return true
